@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exchange rate</title>
+		<meta charset="UTF-8">
+		<script src="jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<button>EUR</button>
+		<button>USD</button>
+		<button>GBP</button>
+		<button>CHF</button>
+		<div class="content"></div>
+
+		<script>
+			$('button').on('click', function() {
+				var code = $(this).html();
+				$.getJSON('http://api.nbp.pl/api/exchangerates/rates/A/' + code + '?format=json', function(json) {
+					$('.content').html(json.rates[0].mid);
+				});
+			});
+		</script>
+	</body>
+</html>
