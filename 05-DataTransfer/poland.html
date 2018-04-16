@@ -3,20 +3,24 @@
 	<head>
 		<title>Poland</title>
 		<meta charset="UTF-8">
+		<script src="jquery-3.1.1.min.js"></script>
 	</head>
 	<body>
 		<h1>Official name</h1>
-		<p></p>
+		<p id="official"></p>
 		
 		<h1>Capital city</h1>
-		<p></p>
+		<p id="capital"></p>
 
 		<h1>Countries bordering</h1>
-		<p></p>
+		<p id="bordering"></p>
 
 		<script>
-			// a JavaScript code here ...
-			
+			$.getJSON('poland.json', function(result) {
+				$("#official").html(result.name.official);
+				$("#capital").html(result.capital);
+				$("#bordering").html(result.borders.toString());
+			});
 		</script>
 	</body>
 </html>
